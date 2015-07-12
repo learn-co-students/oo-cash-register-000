@@ -21,6 +21,7 @@ describe 'CashRegister' do
 
   describe '#add_item' do
     it 'accepts a title and a price and increases the total' do
+      cash_register.total = 0
       expect{cash_register.add_item("eggs", 0.98)}.to change{cash_register.total}.by(0.98)
     end
 
