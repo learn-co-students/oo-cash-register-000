@@ -1,12 +1,13 @@
-
+require 'pry'
 class CashRegister
-	attr_accessor :total, :discount
+	attr_accessor :total, :discount, :last_item_memory
 	def initialize(discount = 0)
 		@total = 0
 		@discount = discount
 	end
 
 	def add_item(item, price, quantity = 1)
+		self.last_item_memory = price
 		if quantity > 1
 			quantity.times { self.items << item }
 			self.total += (price * quantity)
@@ -28,4 +29,8 @@ class CashRegister
 	def items
 		@items ||= []
 	end
+
+	# def void_last_transaction
+	# 	self.total - self.last_item_memory
+	# end
 end
